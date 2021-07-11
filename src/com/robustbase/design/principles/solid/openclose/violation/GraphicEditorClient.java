@@ -4,7 +4,17 @@ package com.robustbase.design.principles.solid.openclose.violation;
  * @author Atul Dwivedi
  * @date 11/07/21
  */
-public class GraphicEditor {
+public class GraphicEditorClient {
+    public static void main(String[] args) {
+        GraphicEditor graphicEditor = new GraphicEditor();
+        graphicEditor.drawShape(new Circle());
+        graphicEditor.drawShape(new Rectangle());
+        //New shape: Triangle - which class needs to be changed? - GraphicEditor
+    }
+}
+
+//  Violation of Open Close Principle - bad design
+class GraphicEditor {
     public void drawShape(Shape shape) {
         if (shape.type == 1) {
             drawCircle((Circle) shape);
@@ -20,11 +30,6 @@ public class GraphicEditor {
     public void drawRectangle(Rectangle rectangle) {
         rectangle.drawRectangle();
     }
-
-    public static void main(String[] args) {
-        GraphicEditor graphicEditor = new GraphicEditor();
-        graphicEditor.drawShape(new Rectangle());
-    }
 }
 
 class Shape {
@@ -37,7 +42,7 @@ class Circle extends Shape {
     }
 
     void drawCircle() {
-        System.out.print("Drawing circle...");
+        System.out.println("Drawing circle...");
     }
 }
 
@@ -47,6 +52,6 @@ class Rectangle extends Shape {
     }
 
     void drawRectangle() {
-        System.out.print("Drawing rectangle...");
+        System.out.println("Drawing rectangle...");
     }
 }
