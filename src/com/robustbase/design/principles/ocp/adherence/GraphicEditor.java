@@ -1,23 +1,22 @@
-package com.robustbase.design.principles.solid.openclose.adherence;
+package com.robustbase.design.principles.ocp.adherence;
 
 /**
  * @author Atul Dwivedi
  * @date 11/07/21
  */
-public class GraphicEditorClient {
+//  Adherence of Open Close Principle - good design
+public class GraphicEditor {
+    public void drawShape(Shape shape) {
+        shape.draw();
+    }
+
+    //for testing purpose only
     public static void main(String[] args) {
         GraphicEditor graphicEditor = new GraphicEditor();
         graphicEditor.drawShape(new Circle());
         graphicEditor.drawShape(new Rectangle());
         //New shape: Triangle
         graphicEditor.drawShape(new Triangle());
-    }
-}
-
-//  Adherence of Open Close Principle - good design
-class GraphicEditor {
-    public void drawShape(Shape shape) {
-        shape.draw();
     }
 }
 
